@@ -11,8 +11,6 @@ function displayCategories() {
     }
 }
 
-displayCategories();
-
 function displayGif() {
 
     searchterm = $(this).text()
@@ -61,14 +59,19 @@ function changeAnimation() {
 
 function addnewTerm() {
 
-    $("#search-button-area").empty()
-    newterm = $("#terminput").val().trim();
-    categories.push(newterm);
-    displayCategories();
-    $("#terminput").val("")
+    if ($("#terminput").val() !== "") {
+        
+        $("#search-button-area").empty()
+        newterm = $("#terminput").val().trim();
+        categories.push(newterm);
+        displayCategories();
+        $("#terminput").val("")
+
+    }
 
 }
 
+displayCategories();
 $(document).on("click", ".searchbutton", displayGif);
 $(document).on("click", ".gifclick", changeAnimation);
 $(document).on("click", "#addtermbutton", addnewTerm);
